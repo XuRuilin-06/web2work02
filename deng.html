@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input{
+        border:white;
+        height:35px;
+        width:150px;
+        outline: none;
+    }
+    
+    p{
+        height:10px;
+        font-size:10px;
+        color:rgba(0,0,0,0.5);
+        width:200px;
+    } 
+   
+    #submit{
+        width: 230px;
+        background-color:rgb(53, 51, 214);
+        color:yellow;
+        display:block;
+    }
+    .diva{
+        height:37px;
+        width:230px;
+        border:1px  solid black ;
+        font-size: 16px;
+    }
+    #second1{
+        width:251px;
+    }
+    #first{
+        position:relative;
+        width:250px;
+        height:400px;
+        margin:auto ;
+    }
+   
+    body{
+        background:white url(backgroundimg/img1.gif) no-repeat center center;
+    }
+    
+</style>
+<body>
+    <div id="first">
+        <div id="second1">
+            <form>
+                <div class="diva">  
+                用户名 
+                <input type="text" name="username" id="username"  >
+                </div>
+                <p class="second1p"></p>
+                <div class="diva">
+                设置密码
+                <input type="password" name="password" id="password">
+                </div>
+                <p class="second1p"></p>
+                <input type="button" name="sub" value="立即注册" id="submit">
+            </form>
+        </div>
+    <div>
+</body>
+<script>
+    var inputList = document.getElementsByTagName("input");
+    var second1pList=document.getElementsByClassName("second1p");
+    inputList[0].onfocus=function(){
+        second1pList[0].innerHTML="支持中文数字";
+    }
+    inputList[0].onblur=function(){
+        var txt=this.value;
+        if(txt==""){
+            second1pList[0].innerHTML="用户名不能为空";
+        }else{
+            second1pList[0].innerHTML=" ";
+        }
+        
+    }
+    inputList[1].onfocus=function(){
+        second1pList[1].innerHTML="建议使用两种字符组合";
+    }
+    inputList[1].onblur=function(){
+        var txt=this.value;
+        if(txt==""){
+            second1pList[1].innerHTML="密码不能为空";
+        }else{
+            second1pList[1].innerHTML=" ";
+        }
+        
+    }
+    //点击注册按钮，注册成功则关闭页面
+    var sub=document.getElementById("submit");
+    sub.onclick=function(){
+        var txt1=inputList[0].value;
+        var txt2=inputList[1].value;
+        if(txt1!=""&&txt2!=""){
+           var queding=confirm("注册成功！是否返回主页？");
+           if(queding){
+               window.close();
+           }
+        }
+       
+    }
+        
+
+    
+</script>
+</html>
